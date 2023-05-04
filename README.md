@@ -23,7 +23,7 @@ This program has 10 sorting algorithms:
 9. Timsort,
 10. Heap Sort.
 
-Just choose the algorithm you would like to see in action. Then enter what length the list to be generated should be.
+Simply select the algorithm you would like to see in action. Then enter what length the list to be generated should be. Press `ENTER` and let the magic of sorting algorithms engulf you.
 
 ### What every file does
 - `algs.py` - contains all of the algorithms
@@ -56,7 +56,7 @@ Ten program zawiera 10 algorytmów sortowania:
 9. Timsort,
 10. Sortowanie przez kopcowanie (Heap Sort).
 
-Po prostu wybierz algorytm, który chcesz zobaczyć w działaniu, a następnie wprowadź, jakiej długości lista ma być wygenerowana.
+Po prostu wybierz algorytm, który chcesz zobaczyć w działaniu, a następnie wprowadź, jakiej długości ma być wygenerowana lista. Naciśnij `ENTER` i pozwól, żeby magia algorytmów sortujących cię pochłonęła.
 
 ### Co każdy plik robi
 - `algs.py` - zawiera wszystkie algorytmy,
