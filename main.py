@@ -5,40 +5,26 @@ from algs import Bubble, Insert, Select, Quick, Merge, Count, Bucket, NaturalMer
 
 
 def sort_it(given_list, what_do):
+    sorting_classes = {
+        1: {"name": "Bubble Sort", "class": Bubble(), "func": Bubble.bubble_sort},
+        2: {"name": "Insertion Sort", "class": Insert(), "func": Insert.insertion_sort},
+        3: {"name": "Selection Sort", "class": Select(), "func": Select.selection_sort},
+        4: {"name": "Quick Sort", "class": Quick(), "func": Quick.quicksort},
+        5: {"name": "Merge Sort", "class": Merge(), "func": Merge.mergesort},
+        6: {"name": "Counting Sort", "class": Count(), "func": Count.counting_sort},
+        7: {"name": "Bucket Sort", "class": Bucket(), "func": Bucket.bucket_sort},
+        8: {"name": "Natural Merge Sort", "class": NaturalMerge(), "func": NaturalMerge.natural_merge_sort},
+        9: {"name": "Timsort", "class": Tim(), "func": Tim.timsort},
+        10: {"name": "Heap Sort", "class": Heap(), "func": Heap.heap_sort}
+    }
 
-    if what_do == 1:
-        sort = Bubble()
-        sort.bubble_sort(given_list)
-    elif what_do == 2:
-        sort = Insert()
-        sort.insertion_sort(given_list)
-    elif what_do == 3:
-        sort = Select()
-        sort.selection_sort(given_list)
-    elif what_do == 4:
-        sort = Quick()
-        sort.quicksort(given_list)
-    elif what_do == 5:
-        sort = Merge()
-        sort.mergesort(given_list)
-    elif what_do == 6:
-        sort = Count()
-        sort.counting_sort(given_list)
-    elif what_do == 7:
-        sort = Bucket()
-        sort.bucket_sort(given_list)
-    elif what_do == 8:
-        sort = NaturalMerge()
-        sort.natural_merge_sort(given_list)
-    elif what_do == 9:
-        sort = Tim()
-        sort.timsort(given_list)
-    elif what_do == 10:
-        sort = Heap()
-        sort.heap_sort(given_list)
-    else:
+    if what_do not in sorting_classes:
         print("You shouldn't be here...")
         sys.exit(1)
+
+    sorting_instance = sorting_classes[what_do]["class"]
+    sort_func = sorting_classes[what_do]["func"]
+    sort_func(sorting_instance, given_list)
 
     return given_list
 
