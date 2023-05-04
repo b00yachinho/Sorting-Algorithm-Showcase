@@ -60,7 +60,10 @@ print("***EXECUTION TIME MAY BE LONGER THAN USUAL DUE TO THE PRINTING OF ALGORIT
 
 print("\nSorting algorithms (no particular order):")
 for number, name in algorithm_names.items():
-    print(f"{number}. {name}")
+    if number != 10:
+        print(f"{number}. {name},")
+    else:
+        print(f"{number}. {name}.")
 
 while True:
     choice = int(input("\nSelect an algorithm -> "))
