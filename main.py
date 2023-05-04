@@ -56,8 +56,7 @@ algorithm_names = {
     10: "Heap Sort"
 }
 
-tmp = "Execution time may be longer than usual due to the printing of algorithm steps"
-print("***" + tmp.upper() + "***")
+print("***EXECUTION TIME MAY BE LONGER THAN USUAL DUE TO THE PRINTING OF ALGORITHM STEPS***")
 
 print("\nSorting algorithms (no particular order):")
 for number, name in algorithm_names.items():
