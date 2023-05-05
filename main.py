@@ -23,11 +23,8 @@ print("Sorting algorithms (no particular order):")
 for number, name in enumerate(algorithm_names):
     if number != len(algorithm_names) - 1:
         print(f"{number + 1}. {name},")
-    elif number == len(algorithm_names) - 1:
-        print(f"{number + 1}. {name}.")
     else:
-        print("\nYou shouldn't be here.")
-        sys.exit(1)
+        print(f"{number + 1}. {name}.")
 
 while True:
     choice = int(input("\nSelect an algorithm -> "))
