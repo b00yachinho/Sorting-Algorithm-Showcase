@@ -1,17 +1,18 @@
 class Bubble:
-    def bubble_sort(self, given_list):
+    def bubble_sort(self, given_list, show_steps):
         n = len(given_list)
 
         for i in range(n):
             for j in range(n - i - 1):
                 if given_list[j] > given_list[j + 1]:
                     given_list[j], given_list[j + 1] = given_list[j + 1], given_list[j]
-                    print(given_list)
+                    if show_steps == 'y':
+                        print(given_list)
         return given_list
 
 
 class Insert:
-    def insertion_sort(self, given_list):
+    def insertion_sort(self, given_list, show_steps):
         for i in range(1, len(given_list)):
             key = given_list[i]
             j = i - 1
@@ -19,12 +20,13 @@ class Insert:
                 given_list[j + 1] = given_list[j]
                 j -= 1
             given_list[j + 1] = key
-            print(given_list)
+            if show_steps == 'y':
+                print(given_list)
         return given_list
 
 
 class Select:
-    def selection_sort(self, given_list):
+    def selection_sort(self, given_list, show_steps):
         n = len(given_list)
 
         for i in range(n):
@@ -33,38 +35,41 @@ class Select:
                 if given_list[j] < given_list[min_index]:
                     min_index = j
             given_list[i], given_list[min_index] = given_list[min_index], given_list[i]
-            print(given_list)
+            if show_steps == 'y':
+                print(given_list)
         return given_list
 
 
 class Quick:
-    def quicksort(self, given_list):
+    def quicksort(self, given_list, show_steps):
         if len(given_list) <= 1:
             return given_list
         else:
             pivot = given_list[0]
             lower = [x for x in given_list[1:] if x < pivot]
             higher = [x for x in given_list[1:] if x >= pivot]
-            sorted_lower = self.quicksort(lower)
-            sorted_higher = self.quicksort(higher)
+            sorted_lower = self.quicksort(lower, show_steps)
+            sorted_higher = self.quicksort(higher, show_steps)
             sorted_given_list = sorted_lower + [pivot] + sorted_higher
-            print(sorted_given_list)
+            if show_steps == 'y':
+                print(sorted_given_list)
             given_list[:] = sorted_given_list
         return given_list
 
 
 class Merge:
-    def mergesort(self, given_list):
+    def mergesort(self, given_list, show_steps):
         if len(given_list) <= 1:
             return given_list
         else:
             mid = len(given_list) // 2
             left = given_list[:mid]
             right = given_list[mid:]
-            left_sorted = self.mergesort(left)
-            right_sorted = self.mergesort(right)
+            left_sorted = self.mergesort(left, show_steps)
+            right_sorted = self.mergesort(right, show_steps)
             sorted_given_list = self.merge(left_sorted, right_sorted)
-            print(sorted_given_list)
+            if show_steps == 'y':
+                print(sorted_given_list)
             given_list[:] = sorted_given_list
         return given_list
 
@@ -85,7 +90,7 @@ class Merge:
 
 
 class Count:
-    def counting_sort(self, given_list):
+    def counting_sort(self, given_list, show_steps):
         max_value = max(given_list)
         count = [0] * (max_value + 1)
 
@@ -94,13 +99,14 @@ class Count:
         sorted_list = []
         for i in range(len(count)):
             sorted_list += [i] * count[i]
-            print(sorted_list)
+            if show_steps == 'y':
+                print(sorted_list)
         given_list[:] = sorted_list
         return given_list
 
 
 class Bucket:
-    def bucket_sort(self, given_list):
+    def bucket_sort(self, given_list, show_steps):
         min_value = min(given_list)
         max_value = max(given_list)
         n = len(given_list)
@@ -112,13 +118,14 @@ class Bucket:
         for i in range(len(bucket_count)):
             if bucket_count[i] != 0:
                 sorted_list += [i + min_value] * bucket_count[i]
-                print(sorted_list)
+                if show_steps == 'y':
+                    print(sorted_list)
         given_list[:] = sorted_list
         return given_list
 
 
 class NaturalMerge:
-    def natural_merge_sort(self, given_list):
+    def natural_merge_sort(self, given_list, show_steps):
         if len(given_list) <= 1:
             return given_list
 
@@ -139,7 +146,7 @@ class NaturalMerge:
             result = []
             i, j = 0, 1
             while j < len(runs):
-                merged = self.merge(runs[i], runs[j])
+                merged = self.merge(runs[i], runs[j], show_steps)
                 result.append(merged)
                 i, j = i + 2, j + 2
             if i < len(runs):
@@ -149,7 +156,7 @@ class NaturalMerge:
         given_list[:] = runs[0]
         return given_list
 
-    def merge(self, given_list1, given_list2):
+    def merge(self, given_list1, given_list2, show_steps):
         i = j = 0
         result = []
 
@@ -163,32 +170,36 @@ class NaturalMerge:
 
         result.extend(given_list1[i:])
         result.extend(given_list2[j:])
-        print(result)
+        if show_steps == 'y':
+            print(result)
         return result
 
 
 class Tim:
-    def timsort(self, given_list):
+    def timsort(self, given_list, show_steps):
         minrun = 32
         n = len(given_list)
 
         for i in range(0, n, minrun):
-            self.insertion_sort(given_list, i, min(i + minrun - 1, n - 1))
+            self.insertion_sort(given_list, i, min(i + minrun - 1, n - 1), show_steps)
         size = minrun
 
         while size < n:
             for start in range(0, n, size * 2):
                 midpoint = start + size - 1
                 end = min(start + size * 2 - 1, n - 1)
-                print("Merge - start: {}, midpoint: {}, end: {}".format(start, midpoint, end))
+                if show_steps == 'y':
+                    print("Merge - start: {}, midpoint: {}, end: {}".format(start, midpoint, end))
                 merged_list = self.merge(given_list[start:midpoint + 1], given_list[midpoint + 1:end + 1])
-                print("Merged list: {}".format(merged_list))
+                if show_steps == 'y':
+                    print("Merged list: {}".format(merged_list))
                 given_list[start:start + len(merged_list)] = merged_list
-                print("List after merging: {}".format(given_list))
+                if show_steps == 'y':
+                    print("List after merging: {}".format(given_list))
             size *= 2
         return given_list
 
-    def insertion_sort(self, given_list, left, right):
+    def insertion_sort(self, given_list, left, right, show_steps):
         for i in range(left + 1, right + 1):
             key = given_list[i]
             j = i - 1
@@ -196,7 +207,8 @@ class Tim:
                 given_list[j + 1] = given_list[j]
                 j -= 1
             given_list[j + 1] = key
-        print("List agter insertion sort: {}".format(given_list))
+        if show_steps == 'y':
+            print("List after insertion sort: {}".format(given_list))
 
     def merge(self, given_list1, given_list2):
         i = j = 0
@@ -215,18 +227,18 @@ class Tim:
 
 
 class Heap:
-    def heap_sort(self, given_list):
+    def heap_sort(self, given_list, show_steps):
         n = len(given_list)
 
         for i in range(n // 2 - 1, -1, -1):
-            self.heapify(given_list, n, i)
+            self.heapify(given_list, n, i, show_steps)
 
         for i in range(n - 1, 0, -1):
             given_list[0], given_list[i] = given_list[i], given_list[0]
-            self.heapify(given_list, i, 0)
+            self.heapify(given_list, i, 0, show_steps)
         return given_list
 
-    def heapify(self, given_list, heap_size, i):
+    def heapify(self, given_list, heap_size, i, show_steps):
         largest = i
         left = 2 * i + 1
         right = 2 * i + 2
@@ -239,7 +251,8 @@ class Heap:
 
         if largest != i:
             given_list[i], given_list[largest] = given_list[largest], given_list[i]
-            self.heapify(given_list, heap_size, largest)
-        print(given_list)
+            self.heapify(given_list, heap_size, largest, show_steps)
+        if show_steps == 'y':
+            print(given_list)
         return given_list
 

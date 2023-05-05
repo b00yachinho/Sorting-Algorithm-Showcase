@@ -4,7 +4,7 @@ import time
 from algs import Bubble, Insert, Select, Quick, Merge, Count, Bucket, NaturalMerge, Tim, Heap
 
 
-def sort_it(given_list, what_do):
+def sort_it(given_list, what_do, show_steps):
     sorting_classes = {
         1: {"name": "Bubble Sort", "class": Bubble(), "func": Bubble.bubble_sort},
         2: {"name": "Insertion Sort", "class": Insert(), "func": Insert.insertion_sort},
@@ -24,7 +24,7 @@ def sort_it(given_list, what_do):
 
     sorting_instance = sorting_classes[what_do]["class"]
     sort_func = sorting_classes[what_do]["func"]
-    sort_func(sorting_instance, given_list)
+    sort_func(sorting_instance, given_list, show_steps)
 
     return given_list
 
@@ -59,13 +59,20 @@ while True:
     else:
         print("\nWrong value given. Please try again...")
 
+while True:
+    steps = input("\nShow steps of the algorithm? (y/n) -> ")
+    if steps != 'y' and steps != 'n':
+        print('\nWrong value given.')
+    else:
+        break
+
 n = int(input("\nLength of the list -> "))
 list_before = [random.randint(1, 100) for _ in range(n)]
 list_after = list_before.copy()
 print()
 
 start_time = time.time()
-sort_it(list_after, choice)
+sort_it(list_after, choice, steps)
 end_time = time.time()
 
 print("\nList before sorting:", list_before)
